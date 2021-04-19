@@ -6,7 +6,7 @@ COPY main.go .
 
 RUN go build -o webserver .
 
-FROM alpine
+FROM alpine:latest
 
 WORKDIR /app
 
