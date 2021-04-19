@@ -2,26 +2,19 @@ pipeline {
     agent any
 	
  stages {
-      stage('checkout') {
-           steps {
-             
-                git branch: 'main', url: 'https://github.com/fr3dx/jenkins-git'
-             
-          }
-        }
         
 
-  stage('Docker Pull, Build and Tag') {
-           steps {
-                sh 'docker pull golang:alpine' 
-                sh 'docker build -t gowebapp:latest .' 
+        stage('Docker tag image') {
+            steps {
+                //sh 'docker pull golang:alpine' 
+                //sh 'docker build -t gowebapp:latest .' 
                 sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
         }
      
-  stage('Publish image to Docker Hub') {
+        stage('Publish image to Docker Hub') {
             steps {
 		        withDockerRegistry(credentialsId: 'dockerhub', url: '') {
 		        //sh 'docker login --username username --password-stdin < ~/my_passwd'
@@ -30,7 +23,7 @@ pipeline {
         }
     }
      
-      stage('Run Docker container on Jenkins Agent') {
+        stage('Run Docker container on Jenkins Agent') {
             steps 
 			{
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
