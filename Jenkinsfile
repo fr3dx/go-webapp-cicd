@@ -2,16 +2,13 @@ pipeline {
     agent any
 	
  stages {
-        
-
-        stage('Docker tag image') {
+        stage('Docker Build and Tag image') {
             steps {
-                //sh 'docker pull golang:alpine' 
                 sh 'docker build -t gowebapp:latest .' 
                 sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
-                //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
+                //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
                
-          }
+            }
         }
      
         stage('Publish image to Docker Hub') {
@@ -24,8 +21,7 @@ pipeline {
     }
      
         stage('Run Docker container on Jenkins Agent') {
-            steps 
-			{
+            steps {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
             }
         }
