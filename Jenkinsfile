@@ -7,7 +7,7 @@ pipeline {
         stage('Docker tag image') {
             steps {
                 //sh 'docker pull golang:alpine' 
-                //sh 'docker build -t gowebapp:latest .' 
+                sh 'docker build -t gowebapp:latest .' 
                 sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
