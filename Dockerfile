@@ -7,7 +7,7 @@ FROM golang:1.12.0-alpine3.9
 RUN mkdir /app
 ## We copy everything in the root directory
 ## into our /app directory
-ADD . /app
+ADD main.go /app
 ## We specify that we now wish to execute 
 ## any further commands inside our /app
 ## directory
