@@ -26,7 +26,7 @@ pipeline {
 	 
 	stage('Print docker image ID') {
             steps {
-		    echo "DOCKER_IMAGE_ID"
+		    echo "$DOCKER_IMAGE_ID"
             }
         }
     }
