@@ -8,7 +8,7 @@ pipeline {
                 sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
                 echo "Docker build tag is: $BUILD_ID"
-  		withEnv(['DOCKER_CONTAINER_ID=${sh(docker ps | awk 'FNR == 2 {print $11}').trim()}]) {
+  		withEnv(['DOCKER_CONTAINER_ID=${sh(script:"whoami", returnStdout: true).trim()}]) {
 			 
    		echo "$DOCKER_CONTAINER_ID"
   		}
