@@ -30,8 +30,13 @@ pipeline {
 	 stage('Remove docker container delay 25s') {
             steps {
 	    	//sh './docker_container_rm.sh'
-		VAR1=sh "$(docker ps |awk 'NR==2 {print $11}')"
-		echo '$VAR1'
+		script {
+   			GIT_COMMIT_EMAIL = sh (
+        			script: 'git --no-pager show -s --format=\'%ae\'',
+        			returnStdout: true
+    				).trim()
+    				echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+		}
             }
         }
     }
