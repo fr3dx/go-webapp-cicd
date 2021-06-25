@@ -27,7 +27,7 @@ pipeline {
         }
 	 stage('Remove docker container delay 60s') {
             steps {
-		/var/lib/jenkins/workspace/go-webapp-cicd
+		/var/lib/jenkins/workspace/$BUILD_ID/docker_container_rm.sh
 
             }
         }
