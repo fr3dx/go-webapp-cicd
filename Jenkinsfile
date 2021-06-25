@@ -31,7 +31,7 @@ pipeline {
 	    	//sh './docker_container_rm.sh'
 		script {
    			DOCKER_CONTAINER_NAME = sh (
-        			script: 'docker ps --format '{{.Names}}'',
+        			script: "docker ps --format '{{.Names}}'",
         			returnStdout: true
     				).trim()
     				echo "Docker container name: ${DOCKER_CONTAINER_NAME}"
