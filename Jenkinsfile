@@ -22,12 +22,12 @@ pipeline {
      
         stage('Run Docker container on Jenkins Agent') {
             steps {
+		timeout(time: 3, unit: 'SECONDS') {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
             }
         }
-	 stage('Remove docker container delay 60s') {
+	 stage('Remove docker container delay 25s') {
             steps {
-		echo "$HOME"
 	    	sh './docker_container_rm.sh'
             }
         }
