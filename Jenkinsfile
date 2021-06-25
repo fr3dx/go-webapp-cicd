@@ -8,7 +8,9 @@ pipeline {
                 sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
                 echo "Docker build tag is: $BUILD_ID"
-		    env.DOCKER_CONTAINER_ID=${sh(script:"docker ps | awk 'FNR == 2 {print $11}'", returnStdout: true).trim()}
+  		withEnv(['MYTOOL_HOME=/home/fr3dx']) {
+   		 echo "$MYTOOL_HOME"
+  		}
             }
         }
      
