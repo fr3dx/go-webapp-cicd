@@ -23,6 +23,10 @@ pipeline {
         stage('Run Docker container on Jenkins Agent') {
             steps {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
+            }
+        }
+	 stage('Remove docker container delay 60s') {
+            steps {
 		awk 'BEGIN{print "test"}'
             }
         }
