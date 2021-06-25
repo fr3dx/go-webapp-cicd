@@ -5,7 +5,7 @@ pipeline {
         stage('Docker Build and Tag image') {
             steps {
                 //sh 'docker build -t gowebapp:latest .' 
-                sh 'docker build -t ferencmolnar/gowebapp:latest'
+                sh 'docker build -t ferencmolnar/gowebapp:latest .'
                 //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
                 echo "Docker build tag is: $BUILD_ID"
             }
