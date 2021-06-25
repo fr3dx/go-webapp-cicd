@@ -24,7 +24,6 @@ pipeline {
             steps {
 		timeout(time: 3, unit: 'SECONDS') {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
-            }
         }
 	}
 	 stage('Remove docker container delay 25s') {
@@ -32,7 +31,7 @@ pipeline {
 	    	//sh './docker_container_rm.sh'
 		script {
    			DOCKER_CONTAINER_NAME = sh (
-        			script: 'docker ps',
+        			script: 'docker ps --format '{{.Names}}'',
         			returnStdout: true
     				).trim()
     				echo "Docker container name: ${DOCKER_CONTAINER_NAME}"
