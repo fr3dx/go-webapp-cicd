@@ -31,11 +31,11 @@ pipeline {
             steps {
 	    	//sh './docker_container_rm.sh'
 		script {
-   			GIT_COMMIT_EMAIL = sh (
-        			script: 'docker ps |awk 'NR==2 {print $11}'',
+   			DOCKER_CONTAINER_NAME = sh (
+        			script: 'docker ps',
         			returnStdout: true
     				).trim()
-    				echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+    				echo "Docker container name: ${DOCKER_CONTAINER_NAME}"
 		}
             }
         }
