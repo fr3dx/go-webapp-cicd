@@ -29,8 +29,9 @@ pipeline {
 	}
 	 stage('Remove docker container delay 25s') {
             steps {
-	    	sh './docker_container_rm.sh'
-		sh 'docker ps'
+	    	//sh './docker_container_rm.sh'
+		VAR1=sh "$(docker ps |awk 'NR==2 {print $11}')"
+		echo '$VAR1'
             }
         }
     }
