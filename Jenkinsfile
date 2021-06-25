@@ -16,7 +16,7 @@ pipeline {
 		        withDockerRegistry(credentialsId: 'dockerhub', url: '') {
 		        //sh 'docker login --username username --password-stdin < ~/my_passwd'
 		        sh 'docker push ferencmolnar/gowebapp:latest'
-		    }
+		}
         }
     }
      
@@ -26,6 +26,7 @@ pipeline {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
             }
         }
+	}
 	 stage('Remove docker container delay 25s') {
             steps {
 	    	sh './docker_container_rm.sh'
