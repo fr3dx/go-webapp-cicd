@@ -23,6 +23,7 @@ pipeline {
         stage('Run Docker container on Jenkins Agent') {
             steps {
                 sh "docker run -d -p 80:80 ferencmolnar/gowebapp"
+		awk 'BEGIN{print "test"}'
             }
         }
     }
