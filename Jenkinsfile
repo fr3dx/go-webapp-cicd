@@ -32,7 +32,7 @@ pipeline {
 	    	//sh './docker_container_rm.sh'
 		script {
    			GIT_COMMIT_EMAIL = sh (
-        			script: 'git --no-pager show -s --format=\'%ae\'',
+        			script: 'docker ps |awk 'NR==2 {print $11}'',
         			returnStdout: true
     				).trim()
     				echo "Git committer email: ${GIT_COMMIT_EMAIL}"
