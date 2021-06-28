@@ -7,7 +7,7 @@ pipeline {
                 sh 'docker build -t ferencmolnar/gowebapp:latest .' 
                 //sh 'docker tag gowebapp:latest ferencmolnar/gowebapp:latest'
                 //sh 'docker tag samplewebapp ferencmolnar/gowebapp:$BUILD_NUMBER'
-                echo "Docker build tag is: $BUILD_ID"
+                echo "Jenkins build id is: $BUILD_ID"
             }
         }
      
