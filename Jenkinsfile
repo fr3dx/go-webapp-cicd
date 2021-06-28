@@ -27,7 +27,7 @@ pipeline {
             }
         }
 	}
-	 stage('Remove docker container delay 25s') {
+	 stage('List running containers') {
             steps {
 	    	//sh './docker_container_rm.sh'
 		script {
